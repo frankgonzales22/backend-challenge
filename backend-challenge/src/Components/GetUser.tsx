@@ -33,6 +33,9 @@ const GetUser = () => {
         .catch(err=> console.log(err))
     }
 
+    const updateUser = (user : User) => {
+        const updatedItem = {...user, name : user.name + 'updated'}
+    }
 
 
     return (
