@@ -26,6 +26,15 @@ const GetUser = () => {
     }, [])
 
 
+    const removeUser = (id : number) => {
+        setUsers(users.filter(i => i.id !== id))
+        
+        axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .catch(err=> console.log(err))
+    }
+
+
+
     return (
         <div>
             <ul className="list-group">
@@ -33,8 +42,9 @@ const GetUser = () => {
                     <li key={i.id} className="list-group-item d-flex justify-content-between">
                         <div className="text-primary">{i.name}</div>
                         <div>
-                            {i.website}{" "}
-                            <button className="btn btn-outline-secondary">Remove</button>
+                            {i.website}
+                            <button className="btn btn-outline-secondary mx-3" onClick={() => removeUser(i.id)}>Remove</button>
+                            <button className="btn btn-outline-danger" onClick={() => console.log(i.id)}>Update</button>
                         </div>
 
 
